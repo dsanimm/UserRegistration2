@@ -21,25 +21,49 @@ public class UserRegistration {
 	
 	
 	
-	public static boolean checkfname(String fname) {
+	public static boolean checkfname(String fname) throws InvalidFirstName{
 		String regex = "(^[A-Z][a-z]{2,})";
-		return check(fname,regex);
+		try {
+			return check(fname, regex);
+		} catch (Exception e) {
+			throw new InvalidFirstName("Enter A Valid First Name !");
+		}
 	}
-	public static boolean checklname(String lname) {
+	public static boolean checklname(String lname) throws InvalidLastName{
 		String regex = "(^[A-Z][a-z]{2,})";
-		return check(lname,regex);
+		try {
+			return check(lname,regex);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			throw new InvalidLastName("Enter A Valid Last Name !");
+		}
 	}
-	public static boolean checkemail(String email) {
+	public static boolean checkemail(String email) throws InvalidEmail {
 		String regex = "^[A-za-z0-9]{1,}([.A-za-z0-9-+]*)[@]{1}([A-za-z0-9]{1,})([.A-Za-z]{1,})";
-		return check(email,regex);
+		try {
+			return check(email,regex);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			throw new InvalidEmail("Enter A Valid Email !");
+		}
 	}
-	public static boolean checkmob(String mob) {
+	public static boolean checkmob(String mob) throws InvalidMobileNoException{
 		String regex = "(^[0-9]{2})([\s]{1})([0-9]{10})";
-		return check(mob,regex);
+		try{
+			return check(mob,regex);
+		} catch(Exception e) {
+			throw new InvalidMobileNoException("Enter A Valid Mobile No !");
+
+		}
 	}
-	public static boolean checkpass(String pass) {
+	public static boolean checkpass(String pass) throws InvalidPassword {
 		String regex = "(?=.*\\d)(?=.*[$&+,:;=?@#|'<>.-^*()%!])(?=.*[A-Z])[a-zA-Z0-9$&+,:;=?@#|'<>.-^*()%!]{8,}";
-		return check(pass,regex);
+		try {
+			return check(pass,regex);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			throw new InvalidPassword("Enter A Valid Password !");
+		}
 	}
 	
 	
